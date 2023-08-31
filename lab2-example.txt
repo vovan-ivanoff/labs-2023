@@ -1,0 +1,37 @@
+Last login: Tue Aug 29 18:54:31 on ttys029
+stdneprov@MacBook-Pro-Steve ~ % pwd
+/Users/stdneprov
+stdneprov@MacBook-Pro-Steve ~ % mkdir lab2-example
+stdneprov@MacBook-Pro-Steve ~ % cd lab2-example 
+stdneprov@MacBook-Pro-Steve lab2-example % pwd
+/Users/stdneprov/lab2-example
+stdneprov@MacBook-Pro-Steve lab2-example % ls
+stdneprov@MacBook-Pro-Steve lab2-example % mkdir test-dir
+stdneprov@MacBook-Pro-Steve lab2-example % ls
+test-dir
+stdneprov@MacBook-Pro-Steve lab2-example % touch test-file
+stdneprov@MacBook-Pro-Steve lab2-example % ls
+test-dir	test-file
+stdneprov@MacBook-Pro-Steve lab2-example % touch test-file1 test-file2
+stdneprov@MacBook-Pro-Steve lab2-example % ls                         
+test-dir	test-file	test-file1	test-file2
+stdneprov@MacBook-Pro-Steve lab2-example % cat > test-file3
+Какой-то текст
+stdneprov@MacBook-Pro-Steve lab2-example % ls
+test-dir	test-file	test-file1	test-file2	test-file3
+stdneprov@MacBook-Pro-Steve lab2-example % cat test-file3
+Какой-то текст
+stdneprov@MacBook-Pro-Steve lab2-example % cat test-file1
+stdneprov@MacBook-Pro-Steve lab2-example % cat test-file2
+stdneprov@MacBook-Pro-Steve lab2-example % cat test-file 
+stdneprov@MacBook-Pro-Steve lab2-example % who
+stdneprov console  Jul 31 16:43 
+stdneprov ttys018  Aug 29 16:51 
+stdneprov ttys029  Aug 29 19:23 
+stdneprov@MacBook-Pro-Steve lab2-example % whoami
+stdneprov
+stdneprov@MacBook-Pro-Steve lab2-example % ps
+  PID TTY           TIME CMD
+53533 ttys018    0:00.19 -zsh
+61315 ttys029    0:00.18 -zsh
+stdneprov@MacBook-Pro-Steve lab2-example % 
