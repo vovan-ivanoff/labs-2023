@@ -1,0 +1,457 @@
+(deck@steamdeck lab01)$ pwd
+/home/deck/labs/lab01
+(deck@steamdeck lab01)$ mkdir lab2-primer
+(deck@steamdeck lab01)$ cd !$
+cd lab2-primer
+(deck@steamdeck lab2-primer)$ pwd
+/home/deck/labs/lab01/lab2-primer
+(deck@steamdeck lab2-primer)$ ls
+(deck@steamdeck lab2-primer)$ touch test.txt
+(deck@steamdeck lab2-primer)$ ls
+test.txt
+(deck@steamdeck lab2-primer)$ cat test.txt 
+(deck@steamdeck lab2-primer)$ echo "какой-то текст" > test.txt 
+(deck@steamdeck lab2-primer)$ cat test.txt 
+какой-то текст
+(deck@steamdeck lab2-primer)$ echo "Вовка Иванов понимает баш" > test2.txt
+(deck@steamdeck lab2-primer)$ ls
+test2.txt  test.txt
+(deck@steamdeck lab2-primer)$ cat test*
+Вовка Иванов понимает баш
+какой-то текст
+(deck@steamdeck lab2-primer)$ ls -l
+total 8
+-rw-r--r-- 1 deck deck 48 Sep  4 09:09 test2.txt
+-rw-r--r-- 1 deck deck 27 Sep  4 09:08 test.txt
+(deck@steamdeck lab2-primer)$ mkdir test-dir
+(deck@steamdeck lab2-primer)$ ls
+test2.txt  test-dir  test.txt
+(deck@steamdeck lab2-primer)$ mv test2.txt ./test-dir/test2.txt
+(deck@steamdeck lab2-primer)$ ls test-dir/
+test2.txt
+(deck@steamdeck lab2-primer)$ cat test-dir/test2.txt 
+Вовка Иванов понимает баш
+(deck@steamdeck lab2-primer)$ cp test.txt ../test.txt
+(deck@steamdeck lab2-primer)$ cd ..
+(deck@steamdeck lab01)$ ls
+lab2-primer  test.txt
+(deck@steamdeck lab01)$ cat test.txt
+какой-то текст
+(deck@steamdeck lab01)$ whoami
+deck
+(deck@steamdeck lab01)$ who
+deck     tty1         2023-09-02 15:15
+deck     pts/0        2023-09-02 15:15 (:0)
+deck     pts/1        2023-09-02 18:24 (:0)
+(deck@steamdeck lab01)$ ls -lR
+.:
+total 8
+drwxr-xr-x 3 deck deck 4096 Sep  4 09:10 lab2-primer
+-rw-r--r-- 1 deck deck   27 Sep  4 09:12 test.txt
+
+./lab2-primer:
+total 8
+drwxr-xr-x 2 deck deck 4096 Sep  4 09:10 test-dir
+-rw-r--r-- 1 deck deck   27 Sep  4 09:08 test.txt
+
+./lab2-primer/test-dir:
+total 4
+-rw-r--r-- 1 deck deck 48 Sep  4 09:09 test2.txt
+(deck@steamdeck lab01)$ chmod -R u+x ./lab2-primer/
+(deck@steamdeck lab01)$ ls -lR
+.:
+total 8
+drwxr-xr-x 3 deck deck 4096 Sep  4 09:10 lab2-primer
+-rw-r--r-- 1 deck deck   27 Sep  4 09:12 test.txt
+
+./lab2-primer:
+total 8
+drwxr-xr-x 2 deck deck 4096 Sep  4 09:10 test-dir
+-rwxr--r-- 1 deck deck   27 Sep  4 09:08 test.txt
+
+./lab2-primer/test-dir:
+total 4
+-rwxr--r-- 1 deck deck 48 Sep  4 09:09 test2.txt
+(deck@steamdeck lab01)$ rm lab2-primer/
+rm: cannot remove 'lab2-primer/': Is a directory
+(1)(deck@steamdeck lab01)$ rm -rf lab2-primer/
+(deck@steamdeck lab01)$ ls
+test.txt
+(deck@steamdeck lab01)$ ps
+    PID TTY          TIME CMD
+   6050 pts/1    00:00:00 bash
+   9181 pts/1    00:00:00 ps
+(deck@steamdeck lab01)$ ps -a
+    PID TTY          TIME CMD
+   2668 tty1     00:05:40 Xorg
+   2679 tty1     00:00:00 startplasma-x11
+   9186 pts/1    00:00:00 ps
+(deck@steamdeck lab01)$ ps -aux
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0 168308 14112 ?        Ss   Sep02   0:02 /usr/lib/systemd/systemd splash --swi
+root           2  0.0  0.0      0     0 ?        S    Sep02   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        I<   Sep02   0:00 [rcu_gp]
+root           4  0.0  0.0      0     0 ?        I<   Sep02   0:00 [rcu_par_gp]
+root           6  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kworker/0:0H-events_highpri]
+root           8  0.0  0.0      0     0 ?        I<   Sep02   0:00 [mm_percpu_wq]
+root          10  0.0  0.0      0     0 ?        S    Sep02   0:00 [rcu_tasks_kthre]
+root          11  0.0  0.0      0     0 ?        S    Sep02   0:00 [rcu_tasks_rude_]
+root          12  0.0  0.0      0     0 ?        S    Sep02   0:00 [rcu_tasks_trace]
+root          13  0.0  0.0      0     0 ?        S    Sep02   0:01 [ksoftirqd/0]
+root          14  0.0  0.0      0     0 ?        S    Sep02   0:00 [rcuc/0]
+root          15  0.0  0.0      0     0 ?        I    Sep02   0:05 [rcu_preempt]
+root          16  0.0  0.0      0     0 ?        S    Sep02   0:00 [rcub/0]
+root          17  0.0  0.0      0     0 ?        S    Sep02   0:00 [migration/0]
+root          18  0.0  0.0      0     0 ?        S    Sep02   0:00 [idle_inject/0]
+root          20  0.0  0.0      0     0 ?        S    Sep02   0:00 [cpuhp/0]
+root          21  0.0  0.0      0     0 ?        S    Sep02   0:00 [cpuhp/1]
+root          22  0.0  0.0      0     0 ?        S    Sep02   0:00 [idle_inject/1]
+root          23  0.0  0.0      0     0 ?        S    Sep02   0:00 [migration/1]
+root          24  0.0  0.0      0     0 ?        S    Sep02   0:00 [rcuc/1]
+root          25  0.0  0.0      0     0 ?        S    Sep02   0:00 [ksoftirqd/1]
+root          27  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kworker/1:0H-events_highpri]
+root          28  0.0  0.0      0     0 ?        S    Sep02   0:00 [cpuhp/2]
+root          29  0.0  0.0      0     0 ?        S    Sep02   0:00 [idle_inject/2]
+root          30  0.0  0.0      0     0 ?        S    Sep02   0:00 [migration/2]
+root          31  0.0  0.0      0     0 ?        S    Sep02   0:00 [rcuc/2]
+root          32  0.0  0.0      0     0 ?        S    Sep02   0:01 [ksoftirqd/2]
+root          34  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kworker/2:0H-events_highpri]
+root          35  0.0  0.0      0     0 ?        S    Sep02   0:00 [cpuhp/3]
+root          36  0.0  0.0      0     0 ?        S    Sep02   0:00 [idle_inject/3]
+root          37  0.0  0.0      0     0 ?        S    Sep02   0:00 [migration/3]
+root          38  0.0  0.0      0     0 ?        S    Sep02   0:00 [rcuc/3]
+root          39  0.0  0.0      0     0 ?        S    Sep02   0:00 [ksoftirqd/3]
+root          41  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kworker/3:0H-events_highpri]
+root          42  0.0  0.0      0     0 ?        S    Sep02   0:00 [cpuhp/4]
+root          43  0.0  0.0      0     0 ?        S    Sep02   0:00 [idle_inject/4]
+root          44  0.0  0.0      0     0 ?        S    Sep02   0:00 [migration/4]
+root          45  0.0  0.0      0     0 ?        S    Sep02   0:00 [rcuc/4]
+root          46  0.0  0.0      0     0 ?        S    Sep02   0:02 [ksoftirqd/4]
+root          48  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kworker/4:0H-events_highpri]
+root          49  0.0  0.0      0     0 ?        S    Sep02   0:00 [cpuhp/5]
+root          50  0.0  0.0      0     0 ?        S    Sep02   0:00 [idle_inject/5]
+root          51  0.0  0.0      0     0 ?        S    Sep02   0:00 [migration/5]
+root          52  0.0  0.0      0     0 ?        S    Sep02   0:00 [rcuc/5]
+root          53  0.0  0.0      0     0 ?        S    Sep02   0:00 [ksoftirqd/5]
+root          55  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kworker/5:0H-events_highpri]
+root          56  0.0  0.0      0     0 ?        S    Sep02   0:00 [cpuhp/6]
+root          57  0.0  0.0      0     0 ?        S    Sep02   0:00 [idle_inject/6]
+root          58  0.0  0.0      0     0 ?        S    Sep02   0:00 [migration/6]
+root          59  0.0  0.0      0     0 ?        S    Sep02   0:00 [rcuc/6]
+root          60  0.0  0.0      0     0 ?        S    Sep02   0:01 [ksoftirqd/6]
+root          62  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kworker/6:0H-events_highpri]
+root          63  0.0  0.0      0     0 ?        S    Sep02   0:00 [cpuhp/7]
+root          64  0.0  0.0      0     0 ?        S    Sep02   0:00 [idle_inject/7]
+root          65  0.0  0.0      0     0 ?        S    Sep02   0:00 [migration/7]
+root          66  0.0  0.0      0     0 ?        S    Sep02   0:00 [rcuc/7]
+root          67  0.0  0.0      0     0 ?        S    Sep02   0:00 [ksoftirqd/7]
+root          69  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kworker/7:0H-events_highpri]
+root          70  0.0  0.0      0     0 ?        S    Sep02   0:00 [kdevtmpfs]
+root          71  0.0  0.0      0     0 ?        I<   Sep02   0:00 [netns]
+root          72  0.0  0.0      0     0 ?        I<   Sep02   0:00 [inet_frag_wq]
+root          74  0.0  0.0      0     0 ?        S    Sep02   0:00 [khungtaskd]
+root          75  0.0  0.0      0     0 ?        S    Sep02   0:00 [oom_reaper]
+root          76  0.0  0.0      0     0 ?        I<   Sep02   0:00 [writeback]
+root          77  0.0  0.0      0     0 ?        S    Sep02   0:00 [kcompactd0]
+root          78  0.0  0.0      0     0 ?        SN   Sep02   0:00 [ksmd]
+root          79  0.0  0.0      0     0 ?        SN   Sep02   0:00 [khugepaged]
+root         101  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kintegrityd]
+root         102  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kblockd]
+root         103  0.0  0.0      0     0 ?        I<   Sep02   0:00 [blkcg_punt_bio]
+root         104  0.0  0.0      0     0 ?        I<   Sep02   0:00 [ata_sff]
+root         105  0.0  0.0      0     0 ?        I<   Sep02   0:00 [edac-poller]
+root         106  0.0  0.0      0     0 ?        I<   Sep02   0:00 [devfreq_wq]
+root         107  0.0  0.0      0     0 ?        S    Sep02   0:00 [watchdogd]
+root         108  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kworker/0:1H-kblockd]
+root         109  0.0  0.0      0     0 ?        S    Sep02   0:00 [kswapd0]
+root         111  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kthrotld]
+root         112  0.0  0.0      0     0 ?        S    Sep02   0:00 [irq/25-aerdrv]
+root         113  0.0  0.0      0     0 ?        S    Sep02   0:00 [irq/25-pcie-dpc]
+root         114  0.0  0.0      0     0 ?        S    Sep02   0:00 [irq/26-aerdrv]
+root         115  0.0  0.0      0     0 ?        S    Sep02   0:00 [irq/26-pcie-dpc]
+root         116  0.0  0.0      0     0 ?        S    Sep02   0:00 [irq/27-aerdrv]
+root         117  0.0  0.0      0     0 ?        S    Sep02   0:00 [irq/27-pcie-dpc]
+root         121  0.0  0.0      0     0 ?        I<   Sep02   0:00 [acpi_thermal_pm]
+root         123  0.0  0.0      0     0 ?        I<   Sep02   0:00 [nvme-wq]
+root         124  0.0  0.0      0     0 ?        I<   Sep02   0:00 [nvme-reset-wq]
+root         125  0.0  0.0      0     0 ?        I<   Sep02   0:00 [nvme-delete-wq]
+root         128  0.0  0.0      0     0 ?        I<   Sep02   0:00 [mld]
+root         129  0.0  0.0      0     0 ?        I<   Sep02   0:00 [ipv6_addrconf]
+root         139  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kstrp]
+root         144  0.0  0.0      0     0 ?        I<   Sep02   0:00 [zswap1]
+root         145  0.0  0.0      0     0 ?        I<   Sep02   0:00 [zswap1]
+root         146  0.0  0.0      0     0 ?        I<   Sep02   0:00 [zswap-shrink]
+root         148  0.0  0.0      0     0 ?        I<   Sep02   0:00 [charger_manager]
+root         176  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kworker/4:1H-kblockd]
+root         181  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kworker/3:1H-kblockd]
+root         183  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kworker/5:1H-kblockd]
+root         210  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kworker/2:1H-kblockd]
+root         274  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kworker/6:1H-kblockd]
+root         344  0.0  0.0      0     0 ?        I    Sep02   0:00 [kworker/3:2-mm_percpu_wq]
+root         395  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kworker/1:1H-kblockd]
+root         438  0.0  0.0      0     0 ?        S    Sep02   0:00 [irq/49-FTS3528:]
+root         439  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kworker/7:1H-kblockd]
+root         455  0.0  0.0      0     0 ?        I<   Sep02   0:00 [cryptd]
+root         462  0.0  0.0      0     0 ?        I<   Sep02   0:00 [sdhci]
+root         548  0.0  0.0      0     0 ?        S    Sep02   1:02 [gfx_0.0.0]
+root         549  0.0  0.0      0     0 ?        S    Sep02   0:00 [comp_1.0.0]
+root         550  0.0  0.0      0     0 ?        S    Sep02   0:00 [comp_1.1.0]
+root         551  0.0  0.0      0     0 ?        S    Sep02   0:00 [comp_1.2.0]
+root         552  0.0  0.0      0     0 ?        S    Sep02   0:00 [comp_1.3.0]
+root         553  0.0  0.0      0     0 ?        S    Sep02   0:00 [comp_1.0.1]
+root         554  0.0  0.0      0     0 ?        S    Sep02   0:00 [comp_1.1.1]
+root         555  0.0  0.0      0     0 ?        S    Sep02   0:00 [comp_1.2.1]
+root         556  0.0  0.0      0     0 ?        S    Sep02   0:00 [comp_1.3.1]
+root         557  0.0  0.0      0     0 ?        S    Sep02   0:00 [sdma0]
+root         558  0.0  0.0      0     0 ?        S    Sep02   0:00 [vcn_dec_0]
+root         559  0.0  0.0      0     0 ?        S    Sep02   0:00 [vcn_enc_0.0]
+root         560  0.0  0.0      0     0 ?        S    Sep02   0:00 [vcn_enc_0.1]
+root         561  0.0  0.0      0     0 ?        S    Sep02   0:00 [jpeg_dec]
+root         577  0.0  0.0      0     0 ?        I<   Sep02   0:00 [amdgpu_dm_hpd_r]
+root         578  0.0  0.0      0     0 ?        I<   Sep02   0:00 [amdgpu_dm_hpd_r]
+root         579  0.0  0.0      0     0 ?        I<   Sep02   0:00 [dm_vblank_contr]
+root         580  0.0  0.0      0     0 ?        S    Sep02   0:00 [card0-crtc0]
+root         581  0.0  0.0      0     0 ?        S    Sep02   0:00 [card0-crtc1]
+root         582  0.0  0.0      0     0 ?        S    Sep02   0:00 [card0-crtc2]
+root         583  0.0  0.0      0     0 ?        S    Sep02   0:00 [card0-crtc3]
+root         607  0.0  0.0      0     0 ?        I    Sep02   0:00 [kworker/7:2-rcu_gp]
+root         618  0.0  0.0      0     0 ?        I<   Sep02   0:00 [btrfs-worker]
+root         619  0.0  0.0      0     0 ?        I<   Sep02   0:00 [btrfs-worker-hi]
+root         620  0.0  0.0      0     0 ?        I<   Sep02   0:00 [btrfs-delalloc]
+root         621  0.0  0.0      0     0 ?        I<   Sep02   0:00 [btrfs-flush_del]
+root         622  0.0  0.0      0     0 ?        I<   Sep02   0:00 [btrfs-cache]
+root         623  0.0  0.0      0     0 ?        I<   Sep02   0:00 [btrfs-fixup]
+root         624  0.0  0.0      0     0 ?        I<   Sep02   0:00 [btrfs-endio]
+root         625  0.0  0.0      0     0 ?        I<   Sep02   0:00 [btrfs-endio-met]
+root         626  0.0  0.0      0     0 ?        I<   Sep02   0:00 [btrfs-endio-met]
+root         627  0.0  0.0      0     0 ?        I<   Sep02   0:00 [btrfs-endio-rai]
+root         628  0.0  0.0      0     0 ?        I<   Sep02   0:00 [btrfs-rmw]
+root         629  0.0  0.0      0     0 ?        I<   Sep02   0:00 [btrfs-endio-wri]
+root         630  0.0  0.0      0     0 ?        I<   Sep02   0:00 [btrfs-freespace]
+root         631  0.0  0.0      0     0 ?        I<   Sep02   0:00 [btrfs-delayed-m]
+root         632  0.0  0.0      0     0 ?        I<   Sep02   0:00 [btrfs-readahead]
+root         633  0.0  0.0      0     0 ?        I<   Sep02   0:00 [btrfs-qgroup-re]
+root         634  0.0  0.0      0     0 ?        S    Sep02   0:00 [btrfs-cleaner]
+root         635  0.0  0.0      0     0 ?        S    Sep02   0:00 [btrfs-transacti]
+root         657  0.0  0.0      0     0 ?        S    Sep02   0:00 [jbd2/nvme0n1p6-]
+root         658  0.0  0.0      0     0 ?        I<   Sep02   0:00 [ext4-rsv-conver]
+root         711  0.0  0.0  45292 13648 ?        Ss   Sep02   0:00 /usr/lib/systemd/systemd-journald
+root         723  0.0  0.0  32160 10144 ?        Ss   Sep02   0:00 /usr/lib/systemd/systemd-udevd
+root         761  0.0  0.0      0     0 ?        S    Sep02   0:01 [spi0]
+root         791  0.0  0.0      0     0 ?        I<   Sep02   0:00 [cfg80211]
+root         793  0.0  0.0      0     0 ?        I<   Sep02   0:00 [cs35l41_ramp]
+root         794  0.0  0.0      0     0 ?        S    Sep02   0:00 [irq/74-cs35l41]
+root         797  0.0  0.0      0     0 ?        I<   Sep02   0:00 [cs35l41]
+root         798  0.0  0.0      0     0 ?        I<   Sep02   0:00 [cs35l41_ramp]
+root         799  0.0  0.0      0     0 ?        S    Sep02   0:00 [irq/74-cs35l41]
+root         800  0.0  0.0      0     0 ?        I<   Sep02   0:00 [cs35l41]
+root         808  0.0  0.0      0     0 ?        S    Sep02   0:15 [irq/78-rtw88_pc]
+root         813  0.0  0.0      0     0 ?        S    Sep02   0:00 [irq/76-nau8821]
+root         841  0.0  0.0      0     0 ?        S    Sep02   0:00 [jbd2/nvme0n1p8-]
+root         842  0.0  0.0      0     0 ?        I<   Sep02   0:00 [ext4-rsv-conver]
+systemd+     866  0.0  0.0  19988 12880 ?        Ss   Sep02   0:00 /usr/lib/systemd/systemd-resolved
+systemd+     870  0.0  0.0  89584  7148 ?        Ssl  Sep02   0:00 /usr/lib/systemd/systemd-timesyncd
+avahi        889  0.0  0.0   9104  5076 ?        Ss   Sep02   0:05 avahi-daemon: running [steamdeck.loca
+root         890  0.0  0.0  11924  6164 ?        Ss   Sep02   0:00 /usr/lib/bluetooth/bluetoothd
+dbus         891  0.0  0.0  10708  6452 ?        Ss   Sep02   0:02 /usr/bin/dbus-daemon --system --addre
+root         892  0.0  0.0  18896 13356 ?        Ss   Sep02   0:00 /usr/bin/python /usr/bin/ds-inhibit
+root         894  0.0  0.1  29136 22348 ?        Ss   Sep02   0:00 python3 /usr/bin/gpu-trace --daemon
+root         898  0.0  0.0  17724 12796 ?        Ss   Sep02   0:29 /usr/bin/python -u /usr/share/jupiter
+deck         900  0.0  0.0   7464  2192 ?        Ss   Sep02   0:00 socat TCP4-LISTEN:8081,fork TCP4:127.
+deck         904  0.0  0.1  28464 18788 ?        Ss   Sep02   0:00 /usr/bin/python /usr/share/steamos-de
+root         911  0.0  0.0  49052  9220 ?        Ss   Sep02   0:00 /usr/lib/systemd/systemd-logind
+root         912  0.0  0.0   4308  2712 ?        Ss   Sep02   0:07 /usr/lib/vpower
+avahi        917  0.0  0.0   8444   416 ?        S    Sep02   0:00 avahi-daemon: chroot helper
+root         922  0.0  0.1 331944 20548 ?        Ssl  Sep02   0:02 /usr/bin/NetworkManager --no-daemon
+root         981  0.0  0.0  15628  5896 ?        Ss   Sep02   0:15 /usr/lib/iwd/iwd
+deck        1080  0.0  0.0  19216 12512 ?        Ss   Sep02   0:00 /usr/lib/systemd/systemd --user
+deck        1084  0.0  0.0  22868  3572 ?        S    Sep02   0:00 (sd-pam)
+deck        1091  0.0  0.0  14364  1500 ?        Ssl  Sep02   0:00 /usr/bin/gamemoded
+deck        1094  0.0  0.0   9092  5412 ?        Ss   Sep02   0:03 /usr/bin/dbus-daemon --session --addr
+polkitd     1135  0.0  0.0 310584 10844 ?        Ssl  Sep02   0:01 /usr/lib/polkit-1/polkitd --no-debug
+deck        1239  0.0  0.2 251384 42856 ?        Ssl  Sep02   0:06 /usr/bin/pipewire
+deck        1240  0.0  0.1 258964 19272 ?        Ssl  Sep02   0:01 /usr/bin/wireplumber
+rtkit       1241  0.0  0.0  88308  1560 ?        SNsl Sep02   0:00 /usr/lib/rtkit-daemon
+root        1442  0.0  0.0      0     0 ?        I    Sep02   0:00 [kworker/2:55-cgroup_destroy]
+root        1443  0.0  0.0      0     0 ?        I    Sep02   0:00 [kworker/2:56-mm_percpu_wq]
+deck        1575  0.0  0.0 527656  6536 ?        Ssl  Sep02   0:00 /usr/lib/xdg-document-portal
+deck        1578  0.0  0.0 232036  4872 ?        Ssl  Sep02   0:00 /usr/lib/xdg-permission-store
+root        1583  0.0  0.0   2508   944 ?        Ss   Sep02   0:00 fusermount -o rw,nosuid,nodev,fsname=
+root        1693  0.0  0.0 392304 13032 ?        Ssl  Sep02   0:00 /usr/lib/udisks2/udisksd
+deck        1742  0.0  0.1  35244 20288 ?        Ssl  Sep02   0:13 /usr/bin/pipewire-pulse
+root        2654  0.0  0.1 141496 19124 ?        Ssl  Sep02   0:00 /usr/bin/sddm
+root        2656  0.0  0.1  65096 19612 ?        S    Sep02   0:00 /usr/lib/sddm/sddm-helper --socket /t
+deck        2665  0.0  0.6 799276 102772 ?       Sl   Sep02   0:00 /usr/bin/kwalletd5 --pam-login 13 14
+deck        2667  0.0  0.0  52556 11736 tty1     Ss+  Sep02   0:00 /usr/lib/sddm/sddm-helper-start-x11us
+deck        2668  0.2  0.8 856052 129100 tty1    Sl+  Sep02   5:41 /usr/lib/Xorg -nolisten tcp -backgrou
+deck        2679  0.0  0.2 194908 41652 tty1     Sl+  Sep02   0:00 /usr/bin/startplasma-x11
+deck        2707  0.0  0.0 620980 13588 ?        Ssl  Sep02   0:00 /usr/lib/xdg-desktop-portal
+deck        2715  0.0  0.6 798148 98436 ?        Ssl  Sep02   0:00 /usr/lib/xdg-desktop-portal-kde
+deck        2744  0.0  0.4 268748888 64496 ?     SNsl Sep02   0:02 /usr/lib/baloo_file
+root        2750  0.0  0.0 243804  9912 ?        Ssl  Sep02   0:00 /usr/lib/upowerd
+deck        2765  0.0  0.6 797792 104244 ?       Ssl  Sep02   0:01 /usr/bin/ksmserver
+deck        2767  0.0  0.8 1680744 136324 ?      Ssl  Sep02   0:04 /usr/bin/kded5
+deck        2768  0.2  1.2 2389800 194724 ?      Ssl  Sep02   5:21 /usr/bin/kwin_x11 --replace
+deck        2800  0.0  4.4 4510024 674008 ?      Ssl  Sep02   0:58 /usr/bin/plasmashell --no-respawn
+deck        2801  0.0  0.1 230380 26952 ?        Ssl  Sep02   0:04 /usr/bin/kglobalaccel5
+deck        2810  0.0  0.0 154952  3956 ?        Ssl  Sep02   0:00 /usr/lib/dconf-service
+deck        2837  0.0  0.2 544328 38816 ?        Ssl  Sep02   0:01 /usr/lib/kactivitymanagerd
+deck        2838  0.0  0.1 228664 23368 ?        Ssl  Sep02   0:00 /usr/bin/gmenudbusmenuproxy
+deck        2839  0.0  0.6 873080 104116 ?       Ssl  Sep02   0:00 /usr/lib/polkit-kde-authentication-ag
+deck        2840  0.0  0.3 493808 47744 ?        Ssl  Sep02   0:01 /usr/lib/org_kde_powerdevil
+deck        2841  0.0  0.1 227640 22756 ?        Ssl  Sep02   0:00 /usr/bin/xembedsniproxy
+deck        2923  0.0  0.1 220792 22264 ?        Ssl  Sep02   0:00 /usr/lib/kf5/kscreen_backend_launcher
+deck        2953  0.0  0.7 802648 109960 ?       Ssl  Sep02   0:01 /usr/lib/kdeconnectd
+deck        2958  0.0  0.0 235104  5340 ?        Ssl  Sep02   0:00 /usr/lib/geoclue-2.0/demos/agent
+deck        2959  0.0  0.0 307864  8532 ?        Ssl  Sep02   0:16 /usr/bin/ibus-daemon --panel=/usr/lib
+deck        2968  0.0  0.6 800064 104412 ?       Ssl  Sep02   0:01 /usr/bin/kaccess
+deck        2970  0.0  0.8 1253656 124232 ?      Ssl  Sep02   0:01 /usr/lib/DiscoverNotifier
+deck        2971  0.0  0.0   7656  3908 ?        Ss   Sep02   0:00 bash /home/deck/.local/share/Steam/st
+deck        2989  0.0  0.0 232340  6076 ?        Sl   Sep02   0:00 /usr/lib/ibus/ibus-dconf
+deck        2991  0.0  0.6 1019948 102800 ?      Sl   Sep02   0:04 /usr/lib/kimpanel-ibus-panel
+deck        2994  0.0  0.5 746732 84976 ?        Sl   Sep02   0:03 /usr/lib/ibus/ibus-extension-gtk3
+deck        2997  0.0  0.0 306032  6164 ?        Sl   Sep02   0:00 /usr/lib/ibus/ibus-portal
+deck        3119  0.0  0.0 307784  7408 ?        Ssl  Sep02   0:00 /usr/lib/at-spi-bus-launcher
+deck        3132  0.0  0.0   8276  4608 ?        S    Sep02   0:00 /usr/bin/dbus-daemon --config-file=/u
+deck        3144  0.0  0.0 160968  6872 ?        Sl   Sep02   0:00 /usr/lib/at-spi2-registryd --use-gnom
+deck        3193  0.3  1.3 767632 204740 ?       Sl   Sep02   8:54 /home/deck/.local/share/Steam/ubuntu1
+deck        3194  0.0  0.0 158516  5996 ?        Sl   Sep02   0:04 /usr/lib/ibus/ibus-engine-simple
+root        3249  0.0  0.0 238044  8904 ?        Ssl  Sep02   0:00 /usr/lib/accounts-daemon
+deck        3286  0.0  1.9 1052140 302808 ?      Ssl  Sep02   1:05 /home/deck/.local/share/Steam/ubuntu1
+deck        3326  0.0  0.3 224012 54752 ?        S    Sep02   0:00 /home/deck/.local/share/Steam/ubuntu1
+deck        3327  0.0  0.3 224012 55276 ?        S    Sep02   0:00 /home/deck/.local/share/Steam/ubuntu1
+deck        3338  0.2  1.1 613512 177492 ?       Sl   Sep02   5:12 /home/deck/.local/share/Steam/ubuntu1
+deck        3360  0.0  0.5 303696 83120 ?        Sl   Sep02   0:00 /home/deck/.local/share/Steam/ubuntu1
+deck        3440  0.5  3.7 5113728 562520 ?      Sl   Sep02  12:36 /home/deck/.local/share/Steam/ubuntu1
+deck        3572  0.0  0.4 4561096 74460 ?       Sl   Sep02   0:00 /home/deck/.local/share/Steam/ubuntu1
+deck        3742  0.0  1.7 34318700 273060 ?     Sl   Sep02   1:05 /usr/lib/chromium/chromium --enable-c
+deck        3744  0.0  0.0 33569388 4384 ?       Sl   Sep02   0:00 /usr/lib/chromium/chrome_crashpad_han
+deck        3746  0.0  0.0 33561176 4220 ?       S    Sep02   0:00 /usr/lib/chromium/chrome_crashpad_han
+deck        3750  0.0  0.8 34117368 125236 ?     S    Sep02   0:00 /usr/lib/chromium/chromium --type=zyg
+deck        3751  0.0  0.8 34117360 125492 ?     S    Sep02   0:00 /usr/lib/chromium/chromium --type=zyg
+deck        3753  0.0  0.1 34117388 18256 ?      S    Sep02   0:00 /usr/lib/chromium/chromium --type=zyg
+deck        3774  0.1  1.3 34468920 204152 ?     Sl   Sep02   2:39 /usr/lib/chromium/chromium --type=gpu
+deck        3775  0.0  0.9 34176960 147724 ?     Sl   Sep02   0:05 /usr/lib/chromium/chromium --type=uti
+deck        3780  0.0  0.2 34166964 41544 ?      Sl   Sep02   0:00 /usr/lib/chromium/chromium --type=uti
+deck        3850  0.0  1.2 1184291376 189636 ?   Sl   Sep02   0:10 /usr/lib/chromium/chromium --type=ren
+deck        3906  0.0  0.6 1184272928 102488 ?   Sl   Sep02   0:00 /usr/lib/chromium/chromium --type=ren
+deck        3919  0.0  0.6 803260 105252 ?       Sl   Sep02   0:01 /usr/bin/plasma-browser-integration-h
+deck        3963  0.0  1.4 1184569728 218680 ?   Sl   Sep02   0:47 /usr/lib/chromium/chromium --type=ren
+deck        4653  0.0  0.9 1184284296 143364 ?   Sl   Sep02   0:05 /usr/lib/chromium/chromium --type=ren
+root        4681  0.0  0.0      0     0 ?        I    Sep02   0:00 [kworker/6:0-events]
+deck        4881  0.0  1.0 1184289384 159640 ?   Sl   Sep02   0:51 /usr/lib/chromium/chromium --type=ren
+root        5182  0.0  0.0      0     0 ?        I    Sep02   0:00 [kworker/0:0-events]
+root        5209  0.0  0.0      0     0 ?        I    Sep02   0:00 [kworker/3:0-pm]
+root        5263  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kworker/u33:1-hci0]
+root        5278  0.0  0.0      0     0 ?        I    Sep02   0:00 [kworker/5:0-cgroup_destroy]
+deck        5342  0.0  0.7 269233144 119724 ?    Ssl  Sep02   0:00 /usr/lib/baloorunner
+deck        5471  0.0  0.7 1184250968 120164 ?   Sl   Sep02   0:00 /usr/lib/chromium/chromium --type=ren
+deck        5516  0.0  0.8 34217076 131820 ?     Sl   Sep02   0:11 /usr/lib/chromium/chromium --type=uti
+root        5766  0.0  0.0      0     0 ?        I    Sep02   0:00 [kworker/4:1-events]
+deck        5921  0.0  0.9 270046292 145632 ?    Sl   Sep02   0:02 /usr/bin/dolphin /home/deck/minecraft
+deck        5945  0.0  0.1  86660 23668 ?        S    Sep02   0:00 /usr/lib/kf5/kioslave5 /usr/lib/qt/pl
+root        5973  0.0  0.0      0     0 ?        I    Sep02   0:00 [kworker/6:1-mm_percpu_wq]
+root        5987  0.0  0.0   5988  2116 tty4     Ss+  Sep02   0:00 /sbin/agetty -o -p -- \u --noclear - 
+root        5998  0.0  0.0      0     0 ?        I    Sep02   0:00 [kworker/1:1-events]
+deck        6037  0.0  0.8 1039048 129164 ?      Rl   Sep02   0:05 /usr/bin/konsole --workdir /home/deck
+deck        6050  0.0  0.0   8736  5692 pts/1    Ss   Sep02   0:00 /bin/bash
+deck        6815  0.0  0.4 1184231944 66724 ?    Sl   Sep02   0:00 /usr/lib/chromium/chromium --type=ren
+root        6844  0.0  0.0      0     0 ?        I    Sep02   0:00 [kworker/5:1-mm_percpu_wq]
+root        6889  0.0  0.0      0     0 ?        I<   Sep02   0:00 [kworker/u33:0-hci0]
+root        6963  0.0  0.0 154872  1024 ?        Ss   Sep02   0:00 gpg-agent --homedir /etc/pacman.d/gnu
+root        8703  0.0  0.0      0     0 ?        I    Sep02   0:00 [kworker/0:2-events]
+root        8741  0.0  0.0      0     0 ?        I    09:03   0:00 [kworker/1:2-mm_percpu_wq]
+root        8742  0.0  0.0      0     0 ?        I    09:03   0:00 [kworker/7:0-mm_percpu_wq]
+root        8743  0.4  0.0      0     0 ?        I    09:03   0:03 [kworker/u32:18-events_unbound]
+root        8749  0.3  0.0      0     0 ?        I    09:03   0:02 [kworker/u32:24-events_unbound]
+root        8757  0.3  0.0      0     0 ?        I    09:03   0:02 [kworker/u32:32-events_unbound]
+root        8772  0.0  0.0      0     0 ?        S    09:03   0:00 [irq/72-mmc0]
+root        8790  0.0  0.0      0     0 ?        I    09:03   0:00 [kworker/4:0-mm_percpu_wq]
+deck        8966  0.0  0.1 268531396 26992 ?     S    09:07   0:00 /usr/lib/kf5/kioslave5 /usr/lib/qt/pl
+deck        8968  0.0  0.1 268531396 27116 ?     S    09:07   0:00 /usr/lib/kf5/kioslave5 /usr/lib/qt/pl
+root        9180  0.2  0.0      0     0 ?        I    09:14   0:00 [kworker/u32:0-events_power_efficient
+deck        9191  0.0  0.0  11268  4188 pts/1    R+   09:14   0:00 ps -aux
+(deck@steamdeck lab01)$ ps -aux | grep deck
+avahi        889  0.0  0.0   9104  5076 ?        Ss   Sep02   0:05 avahi-daemon: running [steamdeck.local]
+deck         900  0.0  0.0   7464  2192 ?        Ss   Sep02   0:00 socat TCP4-LISTEN:8081,fork TCP4:127.0.0.1:8080
+deck         904  0.0  0.1  28464 18788 ?        Ss   Sep02   0:00 /usr/bin/python /usr/share/steamos-devkit/steamos-devkit-service.py
+deck        1080  0.0  0.0  19216 12512 ?        Ss   Sep02   0:00 /usr/lib/systemd/systemd --user
+deck        1084  0.0  0.0  22868  3572 ?        S    Sep02   0:00 (sd-pam)
+deck        1091  0.0  0.0  14364  1500 ?        Ssl  Sep02   0:00 /usr/bin/gamemoded
+deck        1094  0.0  0.0   9092  5412 ?        Ss   Sep02   0:03 /usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+deck        1239  0.0  0.2 251384 42856 ?        Ssl  Sep02   0:06 /usr/bin/pipewire
+deck        1240  0.0  0.1 258964 19272 ?        Ssl  Sep02   0:01 /usr/bin/wireplumber
+deck        1575  0.0  0.0 527656  6536 ?        Ssl  Sep02   0:00 /usr/lib/xdg-document-portal
+deck        1578  0.0  0.0 232036  4872 ?        Ssl  Sep02   0:00 /usr/lib/xdg-permission-store
+deck        1742  0.0  0.1  35244 20288 ?        Ssl  Sep02   0:13 /usr/bin/pipewire-pulse
+root        2656  0.0  0.1  65096 19612 ?        S    Sep02   0:00 /usr/lib/sddm/sddm-helper --socket /tmp/sddm-auth18e489a6-1948-41bc-895f-8bd69e581521 --id 1 --start /usr/bin/startplasma-steamos-oneshot --user deck --autologin --display-server /usr/bin/X -nolisten tcp -background none -seat seat0 -noreset -keeptty -novtswitch -verbose 3
+deck        2665  0.0  0.6 799276 102772 ?       Sl   Sep02   0:00 /usr/bin/kwalletd5 --pam-login 13 14
+deck        2667  0.0  0.0  52556 11736 tty1     Ss+  Sep02   0:00 /usr/lib/sddm/sddm-helper-start-x11user /usr/bin/X -nolisten tcp -background none -seat seat0 -noreset -keeptty -novtswitch -verbose 3 /usr/share/sddm/scripts/Xsession "/usr/bin/startplasma-steamos-oneshot"
+deck        2668  0.2  0.8 847860 129100 tty1    Rl+  Sep02   5:52 /usr/lib/Xorg -nolisten tcp -background none -seat seat0 -noreset -keeptty -novtswitch -verbose 3 -auth /run/user/1000/6c7ef142-ccb0-4492-8a9a-e02c8cf80516 -displayfd 12 vt1
+deck        2679  0.0  0.2 194908 41652 tty1     Sl+  Sep02   0:00 /usr/bin/startplasma-x11
+deck        2707  0.0  0.0 620980 13588 ?        Ssl  Sep02   0:00 /usr/lib/xdg-desktop-portal
+deck        2715  0.0  0.6 798148 98436 ?        Ssl  Sep02   0:00 /usr/lib/xdg-desktop-portal-kde
+deck        2744  0.0  0.4 268748888 64496 ?     SNsl Sep02   0:02 /usr/lib/baloo_file
+deck        2765  0.0  0.6 797792 104244 ?       Ssl  Sep02   0:01 /usr/bin/ksmserver
+deck        2767  0.0  0.8 1680744 136324 ?      Ssl  Sep02   0:04 /usr/bin/kded5
+deck        2768  0.2  1.2 2389800 194724 ?      Ssl  Sep02   5:29 /usr/bin/kwin_x11 --replace
+deck        2800  0.0  4.4 4510024 674008 ?      Ssl  Sep02   0:59 /usr/bin/plasmashell --no-respawn
+deck        2801  0.0  0.1 230380 26952 ?        Ssl  Sep02   0:04 /usr/bin/kglobalaccel5
+deck        2810  0.0  0.0 154952  3956 ?        Ssl  Sep02   0:00 /usr/lib/dconf-service
+deck        2837  0.0  0.2 544328 38816 ?        Ssl  Sep02   0:01 /usr/lib/kactivitymanagerd
+deck        2838  0.0  0.1 228664 23368 ?        Ssl  Sep02   0:00 /usr/bin/gmenudbusmenuproxy
+deck        2839  0.0  0.6 873080 104116 ?       Ssl  Sep02   0:00 /usr/lib/polkit-kde-authentication-agent-1
+deck        2840  0.0  0.3 493808 47744 ?        Ssl  Sep02   0:01 /usr/lib/org_kde_powerdevil
+deck        2841  0.0  0.1 227640 22756 ?        Ssl  Sep02   0:00 /usr/bin/xembedsniproxy
+deck        2923  0.0  0.1 220792 22264 ?        Ssl  Sep02   0:00 /usr/lib/kf5/kscreen_backend_launcher
+deck        2953  0.0  0.7 802648 109960 ?       Ssl  Sep02   0:01 /usr/lib/kdeconnectd
+deck        2958  0.0  0.0 235104  5340 ?        Ssl  Sep02   0:00 /usr/lib/geoclue-2.0/demos/agent
+deck        2959  0.0  0.0 307864  8532 ?        Ssl  Sep02   0:16 /usr/bin/ibus-daemon --panel=/usr/lib/kimpanel-ibus-panel
+deck        2968  0.0  0.6 800064 104412 ?       Ssl  Sep02   0:01 /usr/bin/kaccess
+deck        2970  0.0  0.8 1253656 124232 ?      Ssl  Sep02   0:01 /usr/lib/DiscoverNotifier
+deck        2971  0.0  0.0   7656  3908 ?        Ss   Sep02   0:00 bash /home/deck/.local/share/Steam/steam.sh -steamdeck -silent
+deck        2989  0.0  0.0 232340  6076 ?        Sl   Sep02   0:00 /usr/lib/ibus/ibus-dconf
+deck        2991  0.0  0.6 1019948 102800 ?      Sl   Sep02   0:04 /usr/lib/kimpanel-ibus-panel
+deck        2994  0.0  0.5 746732 84976 ?        Sl   Sep02   0:03 /usr/lib/ibus/ibus-extension-gtk3
+deck        2997  0.0  0.0 306032  6164 ?        Sl   Sep02   0:00 /usr/lib/ibus/ibus-portal
+deck        3119  0.0  0.0 307784  7408 ?        Ssl  Sep02   0:00 /usr/lib/at-spi-bus-launcher
+deck        3132  0.0  0.0   8276  4608 ?        S    Sep02   0:00 /usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --print-address 11 --address=unix:path=/run/user/1000/at-spi/bus_0
+deck        3144  0.0  0.0 160968  6872 ?        Sl   Sep02   0:01 /usr/lib/at-spi2-registryd --use-gnome-session
+deck        3193  0.3  1.3 767632 204740 ?       Sl   Sep02   9:00 /home/deck/.local/share/Steam/ubuntu12_32/steam -steamdeck -silent
+deck        3194  0.0  0.0 158516  5996 ?        Sl   Sep02   0:04 /usr/lib/ibus/ibus-engine-simple
+deck        3286  0.0  1.9 1052140 302808 ?      Ssl  Sep02   1:06 /home/deck/.local/share/Steam/ubuntu12_64/steamwebhelper -lang=ru_RU -cachedir=/home/deck/.local/share/Steam/config/htmlcache -steampid=3193 -buildid=1691097434 -steamid=0 -logdir=/home/deck/.local/share/Steam/logs -uimode=7 -startcount=0 -steamdeck -steamuniverse=Public -realm=Global -clientui=/home/deck/.local/share/Steam/clientui -steampath=/home/deck/.local/share/Steam/ubuntu12_32/steam -launcher=0 --enable-media-stream --enable-smooth-scrolling --no-sandbox --password-store=basic --log-file=/home/deck/.local/share/Steam/logs/cef_log.txt --disable-quick-menu --disable-features=SameSiteByDefaultCookies --enable-blink-features=ResizeObserver,Worklet,AudioWorklet --disable-blink-features=Badging
+deck        3326  0.0  0.3 224012 54752 ?        S    Sep02   0:00 /home/deck/.local/share/Steam/ubuntu12_64/steamwebhelper --type=zygote --no-zygote-sandbox --no-sandbox --log-file=/home/deck/.local/share/Steam/logs/cef_log.txt --product-version=Valve Steam Client --lang=en_US.UTF-8 --buildid=1691097434 --steamid=0
+deck        3327  0.0  0.3 224012 55276 ?        S    Sep02   0:00 /home/deck/.local/share/Steam/ubuntu12_64/steamwebhelper --type=zygote --no-sandbox --log-file=/home/deck/.local/share/Steam/logs/cef_log.txt --product-version=Valve Steam Client --lang=en_US.UTF-8 --buildid=1691097434 --steamid=0
+deck        3338  0.2  1.1 614536 178080 ?       Sl   Sep02   5:31 /home/deck/.local/share/Steam/ubuntu12_64/steamwebhelper --type=gpu-process --field-trial-handle=8721419574310278313,9953715367595725176,131072 --enable-features=CastMediaRouteProvider --disable-features=SameSiteByDefaultCookies --no-sandbox --log-file=/home/deck/.local/share/Steam/logs/cef_log.txt --product-version=Valve Steam Client --lang=en_US.UTF-8 --buildid=1691097434 --steamid=0 --gpu-preferences=MAAAAAAAAAAgAAAQAAAAAAAAAAAAAAAAAABgAAAAAAAQAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA= --log-file=/home/deck/.local/share/Steam/logs/cef_log.txt --shared-files
+deck        3360  0.0  0.5 303696 83120 ?        Sl   Sep02   0:00 /home/deck/.local/share/Steam/ubuntu12_64/steamwebhelper --type=utility --utility-sub-type=network.mojom.NetworkService --field-trial-handle=8721419574310278313,9953715367595725176,131072 --enable-features=CastMediaRouteProvider --disable-features=SameSiteByDefaultCookies --lang=en-US --service-sandbox-type=network --no-sandbox --log-file=/home/deck/.local/share/Steam/logs/cef_log.txt --product-version=Valve Steam Client --lang=en_US.UTF-8 --buildid=1691097434 --steamid=0 --log-file=/home/deck/.local/share/Steam/logs/cef_log.txt --shared-files=v8_snapshot_data:100
+deck        3440  0.5  3.7 5113728 562328 ?      Sl   Sep02  13:21 /home/deck/.local/share/Steam/ubuntu12_64/steamwebhelper --type=renderer --no-sandbox --force-device-scale-factor=1.00 --log-file=/home/deck/.local/share/Steam/logs/cef_log.txt --field-trial-handle=8721419574310278313,9953715367595725176,131072 --enable-features=CastMediaRouteProvider --disable-features=SameSiteByDefaultCookies --enable-blink-features=ResizeObserver,Worklet,AudioWorklet --disable-blink-features=Badging --lang=en-US --log-file=/home/deck/.local/share/Steam/logs/cef_log.txt --product-version=Valve Steam Client --force-device-scale-factor=1.00 --buildid=1691097434 --steamid=0 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=4 --shared-files=v8_snapshot_data:100
+deck        3572  0.0  0.4 4561096 74460 ?       Sl   Sep02   0:00 /home/deck/.local/share/Steam/ubuntu12_64/steamwebhelper --type=renderer --no-sandbox --force-device-scale-factor=1.00 --log-file=/home/deck/.local/share/Steam/logs/cef_log.txt --field-trial-handle=8721419574310278313,9953715367595725176,131072 --enable-features=CastMediaRouteProvider --disable-features=SameSiteByDefaultCookies --enable-blink-features=ResizeObserver,Worklet,AudioWorklet --disable-blink-features=Badging --lang=en-US --log-file=/home/deck/.local/share/Steam/logs/cef_log.txt --product-version=Valve Steam Client --force-device-scale-factor=1.00 --buildid=1691097434 --steamid=0 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=5 --shared-files=v8_snapshot_data:100
+deck        3742  0.0  1.7 34318700 273060 ?     Sl   Sep02   1:05 /usr/lib/chromium/chromium --enable-crashpad
+deck        3744  0.0  0.0 33569388 4384 ?       Sl   Sep02   0:00 /usr/lib/chromium/chrome_crashpad_handler --monitor-self --monitor-self-annotation=ptype=crashpad-handler --database=/home/deck/.config/chromium/Crash Reports --annotation=channel=Arch Linux --annotation=lsb-release=SteamOS --annotation=plat=Linux --annotation=prod=Chrome_Linux --annotation=ver=106.0.5249.119 --initial-client-fd=4 --shared-client-connection
+deck        3746  0.0  0.0 33561176 4220 ?       S    Sep02   0:00 /usr/lib/chromium/chrome_crashpad_handler --no-periodic-tasks --monitor-self-annotation=ptype=crashpad-handler --database=/home/deck/.config/chromium/Crash Reports --annotation=channel=Arch Linux --annotation=lsb-release=SteamOS --annotation=plat=Linux --annotation=prod=Chrome_Linux --annotation=ver=106.0.5249.119 --initial-client-fd=5 --shared-client-connection
+deck        3750  0.0  0.8 34117368 125236 ?     S    Sep02   0:00 /usr/lib/chromium/chromium --type=zygote --no-zygote-sandbox --enable-crashpad --crashpad-handler-pid=3744 --enable-crash-reporter=,Arch Linux --change-stack-guard-on-fork=enable --enable-crashpad
+deck        3751  0.0  0.8 34117360 125492 ?     S    Sep02   0:00 /usr/lib/chromium/chromium --type=zygote --enable-crashpad --crashpad-handler-pid=3744 --enable-crash-reporter=,Arch Linux --change-stack-guard-on-fork=enable --enable-crashpad
+deck        3753  0.0  0.1 34117388 18256 ?      S    Sep02   0:00 /usr/lib/chromium/chromium --type=zygote --enable-crashpad --crashpad-handler-pid=3744 --enable-crash-reporter=,Arch Linux --change-stack-guard-on-fork=enable --enable-crashpad
+deck        3774  0.1  1.3 34468920 204152 ?     Sl   Sep02   2:39 /usr/lib/chromium/chromium --type=gpu-process --enable-crashpad --crashpad-handler-pid=3744 --enable-crash-reporter=,Arch Linux --change-stack-guard-on-fork=enable --gpu-preferences=WAAAAAAAAAAgAAAIAAAAAAAAAAAAAAAAAABgAAAAAAA4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAIAAAAAAAAAABAAAAAAAAAAgAAAAAAAAACAAAAAAAAAAIAAAAAAAAAA== --shared-files --field-trial-handle=0,i,6889958241459050816,5381589410353371330,131072
+deck        3775  0.0  0.9 34176960 147724 ?     Sl   Sep02   0:05 /usr/lib/chromium/chromium --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=none --enable-crashpad --crashpad-handler-pid=3744 --enable-crash-reporter=,Arch Linux --change-stack-guard-on-fork=enable --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,6889958241459050816,5381589410353371330,131072 --enable-crashpad
+deck        3780  0.0  0.2 34166964 41544 ?      Sl   Sep02   0:00 /usr/lib/chromium/chromium --type=utility --utility-sub-type=storage.mojom.StorageService --lang=en-US --service-sandbox-type=utility --enable-crashpad --crashpad-handler-pid=3744 --enable-crash-reporter=,Arch Linux --change-stack-guard-on-fork=enable --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,6889958241459050816,5381589410353371330,131072
+deck        3850  0.0  1.2 1184291376 189636 ?   Sl   Sep02   0:10 /usr/lib/chromium/chromium --type=renderer --enable-crashpad --crashpad-handler-pid=3744 --enable-crash-reporter=,Arch Linux --extension-process --display-capture-permissions-policy-allowed --event-path-policy=0 --origin-trial-disabled-features=WebGPU --change-stack-guard-on-fork=enable --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=5 --time-ticks-at-unix-epoch=-1693656867876201 --launch-time-ticks=275168477 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,6889958241459050816,5381589410353371330,131072
+deck        3906  0.0  0.6 1184272928 102488 ?   Sl   Sep02   0:00 /usr/lib/chromium/chromium --type=renderer --enable-crashpad --crashpad-handler-pid=3744 --enable-crash-reporter=,Arch Linux --extension-process --display-capture-permissions-policy-allowed --event-path-policy=0 --origin-trial-disabled-features=WebGPU --change-stack-guard-on-fork=enable --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=8 --time-ticks-at-unix-epoch=-1693656867876201 --launch-time-ticks=275274752 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,6889958241459050816,5381589410353371330,131072
+deck        3919  0.0  0.6 803260 105252 ?       Sl   Sep02   0:01 /usr/bin/plasma-browser-integration-host chrome-extension://cimiefiiaegbelhefglklhhakcgmhkai/
+deck        3963  0.0  1.4 1184569728 218680 ?   Sl   Sep02   0:47 /usr/lib/chromium/chromium --type=renderer --enable-crashpad --crashpad-handler-pid=3744 --enable-crash-reporter=,Arch Linux --display-capture-permissions-policy-allowed --event-path-policy=0 --origin-trial-disabled-features=WebGPU --change-stack-guard-on-fork=enable --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=12 --time-ticks-at-unix-epoch=-1693656867876201 --launch-time-ticks=280222042 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,6889958241459050816,5381589410353371330,131072
+deck        4653  0.0  0.9 1184284296 143364 ?   Sl   Sep02   0:05 /usr/lib/chromium/chromium --type=renderer --enable-crashpad --crashpad-handler-pid=3744 --enable-crash-reporter=,Arch Linux --display-capture-permissions-policy-allowed --event-path-policy=0 --origin-trial-disabled-features=WebGPU --change-stack-guard-on-fork=enable --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=15 --time-ticks-at-unix-epoch=-1693656867876201 --launch-time-ticks=1314570853 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,6889958241459050816,5381589410353371330,131072
+deck        4881  0.0  1.0 1184289384 159640 ?   Sl   Sep02   0:51 /usr/lib/chromium/chromium --type=renderer --enable-crashpad --crashpad-handler-pid=3744 --enable-crash-reporter=,Arch Linux --display-capture-permissions-policy-allowed --event-path-policy=0 --origin-trial-disabled-features=WebGPU --change-stack-guard-on-fork=enable --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=22 --time-ticks-at-unix-epoch=-1693656867876201 --launch-time-ticks=1789808935 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,6889958241459050816,5381589410353371330,131072
+deck        5342  0.0  0.7 269233144 119724 ?    Ssl  Sep02   0:00 /usr/lib/baloorunner
+deck        5471  0.0  0.7 1184250968 120164 ?   Sl   Sep02   0:00 /usr/lib/chromium/chromium --type=renderer --enable-crashpad --crashpad-handler-pid=3744 --enable-crash-reporter=,Arch Linux --display-capture-permissions-policy-allowed --event-path-policy=0 --origin-trial-disabled-features=WebGPU --change-stack-guard-on-fork=enable --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=26 --time-ticks-at-unix-epoch=-1693656867876201 --launch-time-ticks=3423747299 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,6889958241459050816,5381589410353371330,131072
+deck        5516  0.0  0.8 34217076 131820 ?     Sl   Sep02   0:11 /usr/lib/chromium/chromium --type=utility --utility-sub-type=audio.mojom.AudioService --lang=en-US --service-sandbox-type=none --enable-crashpad --crashpad-handler-pid=3744 --enable-crash-reporter=,Arch Linux --change-stack-guard-on-fork=enable --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,6889958241459050816,5381589410353371330,131072 --enable-crashpad
+deck        5921  0.0  0.9 270046292 145632 ?    Sl   Sep02   0:02 /usr/bin/dolphin /home/deck/minecraft-launcher
+deck        5945  0.0  0.1  86660 23668 ?        S    Sep02   0:00 /usr/lib/kf5/kioslave5 /usr/lib/qt/plugins/kf5/kio/kio_remote.so remote  local:/run/user/1000/dolphinKvhTnk.4.slave-socket
+deck        6037  0.0  0.8 1039448 129428 ?      Sl   Sep02   0:06 /usr/bin/konsole --workdir /home/deck/minecraft-launcher
+deck        6050  0.0  0.0   8736  5692 pts/1    Ss   Sep02   0:00 /bin/bash
+deck        6815  0.0  0.4 1184231944 66724 ?    Sl   Sep02   0:00 /usr/lib/chromium/chromium --type=renderer --enable-crashpad --crashpad-handler-pid=3744 --enable-crash-reporter=,Arch Linux --display-capture-permissions-policy-allowed --event-path-policy=0 --origin-trial-disabled-features=WebGPU --change-stack-guard-on-fork=enable --lang=en-US --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=28 --time-ticks-at-unix-epoch=-1693656867876201 --launch-time-ticks=4875395110 --shared-files=v8_context_snapshot_data:100 --field-trial-handle=0,i,6889958241459050816,5381589410353371330,131072
+deck        8966  0.0  0.1 268531396 26992 ?     S    09:07   0:00 /usr/lib/kf5/kioslave5 /usr/lib/qt/plugins/kf5/kio/tags.so tags  local:/run/user/1000/dolphinIzqDtb.13.slave-socket
+deck        8968  0.0  0.1 268531396 27116 ?     S    09:07   0:00 /usr/lib/kf5/kioslave5 /usr/lib/qt/plugins/kf5/kio/tags.so tags  local:/run/user/1000/plasmashellOEoYWT.12.slave-socket
+deck        9202  0.0  0.0  11268  4136 pts/1    R+   09:15   0:00 ps -aux
+deck        9203  0.0  0.0   6564  2404 pts/1    S+   09:15   0:00 grep --color=auto deck
+(deck@steamdeck lab01)$ echo "сделано на steam-deck :) by Иванов В  М8О-113Б-23"
+сделано на steam-deck :) by Иванов В  М8О-113Б-23
