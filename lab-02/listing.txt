@@ -1,0 +1,91 @@
+vovan@laba-vm:~/labs$ pwd
+/home/vovan/labs
+vovan@laba-vm:~/labs$ ls
+vovan@laba-vm:~/labs$ mkdir lab-02
+vovan@laba-vm:~/labs$ ls
+lab-02
+vovan@laba-vm:~/labs$ touch f1.txt
+vovan@laba-vm:~/labs$ ls
+f1.txt  lab-02
+vovan@laba-vm:~/labs$ cat f1.txt 
+vovan@laba-vm:~/labs$ echo "Иванов В юзает баш" > f1.txt 
+vovan@laba-vm:~/labs$ cat f1.txt 
+Иванов В юзает баш
+vovan@laba-vm:~/labs$ cat > f2.txt
+Просто какой-то текст для теста^C
+vovan@laba-vm:~/labs$ cat > f2.txt
+Просто какой-то текст для теста
+^C
+vovan@laba-vm:~/labs$ cat f2.txt 
+Просто какой-то текст для теста
+vovan@laba-vm:~/labs$ cat f2.txt >> f1.txt
+vovan@laba-vm:~/labs$ cat f1.txt
+Иванов В юзает баш
+Просто какой-то текст для теста
+vovan@laba-vm:~/labs$ mv f1.txt ./lab-02/f1.txt
+vovan@laba-vm:~/labs$ ls
+f2.txt  lab-02
+vovan@laba-vm:~/labs$ ls lab-02/
+f1.txt
+vovan@laba-vm:~/labs$ cp f2.txt lab-02/f2.txt
+vovan@laba-vm:~/labs$ ls lab-02/
+f1.txt  f2.txt
+vovan@laba-vm:~/labs$ ls -l
+итого 8
+-rw-r--r-- 1 vovan vovan   58 сен  4 21:13 f2.txt
+drwxr-xr-x 2 vovan vovan 4096 сен  4 21:15 lab-02
+vovan@laba-vm:~/labs$ ls -l lab-02
+итого 8
+-rw-r--r-- 1 vovan vovan 92 сен  4 21:14 f1.txt
+-rw-r--r-- 1 vovan vovan 58 сен  4 21:15 f2.txt
+vovan@laba-vm:~/labs$ chmod 744 -R ./lab-02/
+vovan@laba-vm:~/labs$ ls -l lab-02
+итого 8
+-rwxr--r-- 1 vovan vovan 92 сен  4 21:14 f1.txt
+-rwxr--r-- 1 vovan vovan 58 сен  4 21:15 f2.txt
+vovan@laba-vm:~/labs$ rm ./lab-02/f1.txt 
+vovan@laba-vm:~/labs$ ls lab-02/
+f2.txt
+vovan@laba-vm:~/labs$ rm -rf ./lab-02/
+vovan@laba-vm:~/labs$ ls
+f2.txt
+vovan@laba-vm:~/labs$ cat f2.txt 
+Просто какой-то текст для теста
+vovan@laba-vm:~/labs$ who
+vovan    pts/0        2023-09-04 20:43 (192.168.0.184)
+vovan@laba-vm:~/labs$ whoami
+vovan
+vovan@laba-vm:~/labs$ ps
+    PID TTY          TIME CMD
+   1622 pts/0    00:00:00 bash
+   1752 pts/0    00:00:00 ps
+vovan@laba-vm:~/labs$ ps -a
+    PID TTY          TIME CMD
+   1753 pts/0    00:00:00 ps
+vovan@laba-vm:~/labs$ ps -x
+    PID TTY      STAT   TIME COMMAND
+   1610 ?        Ss     0:00 /lib/systemd/systemd --user
+   1611 ?        S      0:00 (sd-pam)
+   1621 ?        R      0:00 sshd: vovan@pts/0
+   1622 pts/0    Ss     0:00 -bash
+   1754 pts/0    R+     0:00 ps -x
+vovan@laba-vm:~/labs$ ps -aux | grep vovan
+root        1607  0.0  0.1  14512  8748 ?        Ss   20:43   0:00 sshd: vovan [priv]
+vovan       1610  0.0  0.1  15044  7960 ?        Ss   20:43   0:00 /lib/systemd/systemd --user
+vovan       1611  0.0  0.0 166636  2572 ?        S    20:43   0:00 (sd-pam)
+vovan       1621  0.0  0.0  14724  6008 ?        S    20:43   0:00 sshd: vovan@pts/0
+vovan       1622  0.0  0.1  10192  6644 pts/0    Ss   20:43   0:00 -bash
+vovan       1756  0.0  0.0   9944  3416 pts/0    R+   21:20   0:00 ps -aux
+vovan       1757  0.0  0.0   6264   708 pts/0    R+   21:20   0:00 grep vovan
+vovan@laba-vm:~/labs$ ps -aux | grep vovan > usr-procs.txt
+vovan@laba-vm:~/labs$ cat usr-procs.txt 
+root        1607  0.0  0.1  14512  8748 ?        Ss   20:43   0:00 sshd: vovan [priv]
+vovan       1610  0.0  0.1  15044  7960 ?        Ss   20:43   0:00 /lib/systemd/systemd --user
+vovan       1611  0.0  0.0 166636  2572 ?        S    20:43   0:00 (sd-pam)
+vovan       1621  0.0  0.0  14724  6008 ?        S    20:43   0:00 sshd: vovan@pts/0
+vovan       1622  0.0  0.1  10192  6644 pts/0    Ss   20:43   0:00 -bash
+vovan       1758  0.0  0.0   9944  3356 pts/0    R+   21:21   0:00 ps -aux
+vovan       1759  0.0  0.0   6264   708 pts/0    R+   21:21   0:00 grep vovan
+vovan@laba-vm:~/labs$ echo "вроде всё"
+вроде всё
+vovan@laba-vm:~/labs$
