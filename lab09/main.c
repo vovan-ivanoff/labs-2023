@@ -1,15 +1,17 @@
 #include <stdio.h>
+
 int Min(int a, int b) {
     return a < b ? a : b;
 }
+
 int Max(int a, int b, int c) {
     if (a > b && a > c){
         return a;
-    }
-    else {
+    } else {
         return b > c ? b : c;
     }
 }
+
 int Mod(int x, int div) {
     int m = x % div;
     if(m < 0) {
@@ -17,11 +19,13 @@ int Mod(int x, int div) {
     }
     return m;
 }
+
 int Sign(int a) {
     if (a>0) return 1;
     else if (a < 0) return -1;
     else return 0;
 }
+
 int CheckDestination(int i, int j) {
     return (i - 10) * (i - 10) + (j - 10) * (j - 10) <= 100 && (i - 10) * (i - 10) + (j - 10) * (j - 10) >= 25;
 }
