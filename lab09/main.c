@@ -21,7 +21,7 @@ int Mod(int x, int div) {
 }
 
 int Sign(int a) {
-    if (a>0) return 1;
+    if (a > 0) return 1;
     else if (a < 0) return -1;
     else return 0;
 }
@@ -37,10 +37,10 @@ int main(int argc, char *argv[]) {
     int flag = 0;
     // printf("%d", checkDestination(i,j));
     for (short k = 0; k < 50; k++) {
-        int nextI = Mod(Min(i+j,i+l) * (k+1),30);
+        int nextI = Mod(Min(i + j,i + l) * (k+1),30);
         int nextJ = j + Mod(l * Sign(j), 20) + Mod(k * Sign(i), 10);
-        int nextL = Mod(Max(i*j,i*l,j*l), 30);
-        if (CheckDestination(nextI,nextJ) == 1) {
+        int nextL = Mod(Max(i * j,i * l,j * l), 30);
+        if (CheckDestination(nextI, nextJ) == 1) {
             flag = 1;
             printf("YES %d\n",k);
             break;
