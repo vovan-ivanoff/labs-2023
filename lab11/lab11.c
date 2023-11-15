@@ -8,10 +8,10 @@ int IsDigit(char c) {
     return c >= '0' && c <= '9';
 }
 
-// вывод числа в ебанутых СС
+// вывод числа в необычных СС
 
 void PBaseR(long long input, int base){
-        if(input > 0){
+    if(input > 0){
         PBaseR(input / base, base);
         if (input % base > 9){
             putchar((input % base) % 10 + 'A');
