@@ -1,4 +1,3 @@
-// поиск максимума целых чисел из представленных
 #include <stdio.h>
 
 int IsSeparator(char c) {
