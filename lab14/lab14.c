@@ -35,7 +35,7 @@ void DoStuff(int *mIn, int *mOut, int width){
     //printf("%d %d\n", x, y);
     for(int i = 0; i < width; i++){
         for (int j = 0; j < width; j ++) {
-            mOut[y * width + x] = mIn[i * width + j];
+            mOut[i * width + j] = mIn[y * width + x];
             if (flag) {
                 x += 1;
                 y += 1;
