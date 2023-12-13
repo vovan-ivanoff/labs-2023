@@ -30,8 +30,8 @@ int GetMatrix(int *m) {
 }
 
 void DoStuff(int *mIn, int *mOut, int width){
-    int min = 0x7FFFFFFF;
-    int max = 0xFFFFFFFF;
+    int min = mIn[0];
+    int max = mIn[0];
     int counter = 0;
     for (int i = 0; i < (width * width); i ++) {
         int elem = mIn[i];
