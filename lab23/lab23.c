@@ -40,26 +40,37 @@ void FindNode(int id, Node* root, Node** res) { // враппер, устаав�
     }
 }
 
-void AddNode(int dad_id, int value, int *idCounter, Node* root) {
+void AddNode(int dadId, int value, int *idCounter, Node** rootPtr) {
     Node *res[3]; // 0 - сам узел, 1 - отец если есть, 2 - старший брат если есть
-    FindNode(dad_id, root, res);
-    if (res[UZEL] != NULL) {
-        Node *dad = res[UZEL];
-        Node *newNode = (Node*)malloc(sizeof(Node));
-        newNode->value = value;
-        newNode->id = *idCounter;
-        *idCounter = *idCounter + 1;
-        newNode->bro = NULL;
-        newNode->son = NULL;
-        if (dad != NULL) {
-            if (dad->son == NULL) {
-                dad->son = newNode;
-            } else {
-                Node *oldBro = dad->son;
-                while (oldBro->bro != NULL) {
-                    oldBro = oldBro->bro;
+    Node *root = *rootPtr;
+    if (dadId == -1) {
+        root = (Node*)malloc(sizeof(Node));
+        root->bro = NULL;
+        root->son = NULL;
+        root->id = 0;
+        root->value = value;
+        *idCounter += 1;
+        *rootPtr = root;
+    } else {
+        FindNode(dadId, root, res);
+        if (res[UZEL] != NULL) {
+            Node *dad = res[UZEL];
+            Node *newNode = (Node*)malloc(sizeof(Node));
+            newNode->value = value;
+            newNode->id = *idCounter;
+            *idCounter = *idCounter + 1;
+            newNode->bro = NULL;
+            newNode->son = NULL;
+            if (dad != NULL) {
+                if (dad->son == NULL) {
+                    dad->son = newNode;
+                } else {
+                    Node *oldBro = dad->son;
+                    while (oldBro->bro != NULL) {
+                        oldBro = oldBro->bro;
+                    }
+                    oldBro->bro = newNode;
                 }
-                oldBro->bro = newNode;
             }
         }
     }
@@ -75,7 +86,8 @@ void DelNodeR(Node *node) { // удаляем сыновей потом брат
     free(node);
 }
 
-void DelNode(int id, Node *root) { // враппер для DelNodeR
+void DelNode(int id, Node **rootPtr) { // враппер для DelNodeR
+    Node *root = *rootPtr;
     Node *res[3]; // 0 - сам узел, 1 - отец если есть, 2 - старший брат если есть
     FindNode(id, root, res); // ищем нужный узел, ответ получаем в res
     if (res[BATYA] != NULL) {
@@ -87,6 +99,8 @@ void DelNode(int id, Node *root) { // враппер для DelNodeR
         DelNodeR(res[UZEL]->son);
     }
     free(res[UZEL]); // и освобождаем его от мучений
+    if (id == 0) root = NULL;
+    *rootPtr = root;
 }
 
 void ChangeValue(int id, int value, Node *root) {
@@ -110,9 +124,13 @@ void PrintTree(Node *root, int depth) {
 }
 
 void PrintTreeD(Node *root) { // враппер
+    if (root != NULL){
     printf("------------\n");
     PrintTree(root, 0);
     printf("------------\n");
+    } else {
+        printf("empty\n");
+    }
 }
 
 void Width(Node* root, int depth, int** res, int* depthMax) {
@@ -157,14 +175,10 @@ void PrintHelp(){
     printf("node output id:value\n");
 }
 int main() {
-    int idCounter = 1;
-    Node *root =  (Node*)malloc(sizeof(Node));
-    root->bro = NULL;
-    root->son = NULL;
-    root->id = 0;
-    root->value = 0;
+    int idCounter = 0;
     char command;
     int arg1, arg2;
+    Node* root = NULL;
     PrintTreeD(root);
     do {
         scanf("%c", &command);
@@ -172,12 +186,12 @@ int main() {
         {
         case 'a':
             scanf("%d %d", &arg1, &arg2);
-            AddNode(arg1, arg2, &idCounter, root);
+            AddNode(arg1, arg2, &idCounter, &root);
             PrintTreeD(root);
         break;
         case 'd':
             scanf("%d", &arg1);
-            DelNode(arg1, root);
+            DelNode(arg1, &root);
             PrintTreeD(root);
         break;
         case 'c':
