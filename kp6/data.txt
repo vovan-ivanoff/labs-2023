@@ -1,0 +1,6 @@
+steamdeck 999 10.7 42000 1
+yayca 1 5.0 100500 7
+mikrofon 2 6.0 800 3
+shlyushka 3 10.8 -1 1
+hui 4 99.9 -1 1
+
